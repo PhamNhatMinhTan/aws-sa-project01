@@ -1,0 +1,13 @@
+1. Minimum RTO for a single AZ outage
+- The RDS will automatic use the replacement replica in other AZ, so the RTO take about 1 - 2 minutes. 
+
+2. Minimum RTO for a single region outage
+- In case RDS in a single region outage, we maybe take 5 - 10 minutes to promote the read replica in another region and change RDS url in our application. 
+- In the worst case, that region outage occurred in the midnight, we can take 15 - 40 minutes to getup and open device to promote the read replica and change url. 
+=> So the RTO take 5 - 40 minutes
+
+3. Minimum RPO for a single AZ outage
+- The RPO is 0 because we have a synchronous copy of the volume when we use RDS multi-AZ.
+
+4. Minimum RPO for a single region outage
+- The RPO is 0 because we have a read replica in other region.
